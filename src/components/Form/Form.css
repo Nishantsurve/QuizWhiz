@@ -1,0 +1,73 @@
+/* Form Styling */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Elements */
+form .form-label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: black;
+}
+
+form .form-control,
+form .form-select {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form .form-control:focus,
+form .form-select:focus {
+    border-color: #7c4dff;
+    box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.25);
+}
+
+/* Styling the "Start Quiz" Button */
+.custom-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    background-color: #9575cd; /* Light purple background */
+    border: none;
+    color: rgb(43, 40, 44); /* Adjusting text color */
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn:hover {
+    /* Darker shade of purple on hover */
+    transform: translateY(2px);
+    background-color: #9575cd;
+    /* Subtle lift on hover */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    form {
+        padding: 1.5rem;
+    }
+
+    form button {
+        font-size: 1rem;
+    }
+}
+
+/* Spacing */
+.mb-3 {
+    margin-bottom: 1.5rem;
+}
+
+.mt-2 {
+    margin-top: 1rem;
+}
