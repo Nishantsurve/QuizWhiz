@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1 align="center">
        ✨  Quiz Web App  ✨
 </h1>
@@ -136,3 +137,6 @@ git push -u origin <your_branch_name>
 **14** You did it! 🥳 Wait for your submission to be accepted and your PR to be merged.
 
 <br />
+=======
+# QuizWhiz
+>>>>>>> 60fa29cc0b0d4a9f663616f939813968507f79fd
