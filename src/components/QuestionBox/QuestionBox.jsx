@@ -4,72 +4,94 @@ import { Badge } from '@chakra-ui/react';
 import quizContext from '../../context/quizContext';
 import clickAudio from './../../Assets/select-sound.mp3';
 
-// #0b4b06 - bg
-// #53a24db5 - border
 const audio = new Audio(clickAudio);
 
 const QuestionBox = (props) => {
     const [selectedAns, setSelectedAns] = useState('');
+    const [timeList, setTimeList] = useState([]); // Store time taken for each question
     const context = useContext(quizContext);
     const { setScore, score, next, setNext, len, answerList, setAnswerList } = context;
     const { question, options, category } = props;
 
-    //Here options[0] = options array and options[1] = correct answer
     let i = -1;
     const alphabet = ['A', 'B', 'C', 'D'];
 
+    // Removes the selected class from all options
     const removeClass = () => {
-        let element = document.getElementsByClassName('q-box_body');
-        for (let i = 0; i < element.length; i++) {
-            for (let j = 0; j < element[i].children.length; j++) {
-                element[i].children[j].classList.remove('optionSelected');
+        const elements = document.getElementsByClassName('q-box_body');
+        for (let i = 0; i < elements.length; i++) {
+            for (let j = 0; j < elements[i].children.length; j++) {
+                elements[i].children[j].classList.remove('optionSelected', 'correct-answer', 'wrong-answer');
             }
         }
     };
 
-    //Update the score
+    // Check the answer and update the score
     const checkAnswer = (selectedAns) => {
         if (selectedAns === '') {
             return true;
         } else if (selectedAns === options[1]) {
-            setScore({ ...score, 'rightAnswers': score.rightAnswers + 1 });
+            setScore({ ...score, rightAnswers: score.rightAnswers + 1 });
         } else {
-            setScore({ ...score, 'wrongAnswers': score.wrongAnswers + 1 });
+            setScore({ ...score, wrongAnswers: score.wrongAnswers + 1 });
         }
     };
 
+    // Handle when an option is clicked
     const handleOptionClick = (e) => {
         audio.play();
         removeClass();
-        setSelectedAns((e.target.innerText.slice(1)).trim());
+        const selected = (e.target.innerText.slice(1)).trim();
+        setSelectedAns(selected);
+
         const currentAlpha = e.target.innerText[0];
-        document.getElementById(currentAlpha).classList.add('optionSelected');
+        const isCorrect = selected === options[1];
+
+        if (isCorrect) {
+            document.getElementById(currentAlpha).classList.add('correct-answer'); // Apply correct answer style
+        } else {
+            document.getElementById(currentAlpha).classList.add('wrong-answer'); // Apply wrong answer style
+        }
     };
 
+    // Handle next question logic
     const handleNextQuestion = () => {
+        const timeTakenForQuestion = timer; // Time taken for the current question
+        setTimeList([...timeList, timeTakenForQuestion]); // Store the time for this question
+
         if (next <= len - 1) {
             checkAnswer(selectedAns);
             setNext(next + 1);
             setSelectedAns('');
+            setTimer(0); // Reset timer for the next question (start from 0)
         }
-        setAnswerList([...answerList, { 'question': question, 'options': options[0], 'id': `id${next}`, 'category': category, 'myAnswer': selectedAns, 'rightAnswer': options[1] }]);
+
+        setAnswerList([...answerList, { 
+            question, 
+            options: options[0], 
+            id: `id${next}`, 
+            category, 
+            myAnswer: selectedAns, 
+            rightAnswer: options[1], 
+            timeTaken: timeTakenForQuestion // Store time taken for review 
+        }]);
     };
 
-    // for reverse timer
-    const [timer, setTimer] = useState(30);
+    // Timer starting from 0 for each question
+    const [timer, setTimer] = useState(0);
 
     useEffect(() => {
-        let myInterval = setInterval(() => {
-            if (timer > 0) {
-                setTimer(timer - 1);
-            } else {
-                setNext(next + 1);
-            }
+        const myInterval = setInterval(() => {
+            setTimer(timer + 1); // Increment timer by 1 every second
         }, 1000);
+
         return () => {
             clearInterval(myInterval);
         };
-    }, [timer, next]);
+    }, [timer]);
+
+    // Calculate total time taken for all questions
+    const totalTimeTaken = timeList.reduce((total, time) => total + time, 0);
 
     return (
         <>
@@ -89,8 +111,13 @@ const QuestionBox = (props) => {
                         options[0].map((index) => {
                             i++;
                             return (
-                                <div id={alphabet[i]} key={index} onClick={handleOptionClick} className="q-box_options">
-                                    <div className='option-icon'>{alphabet[i]}</div> 
+                                <div
+                                    id={alphabet[i]}
+                                    key={index}
+                                    onClick={handleOptionClick}
+                                    className="q-box_options"
+                                >
+                                    <div className="option-icon">{alphabet[i]}</div>
                                     <div dangerouslySetInnerHTML={{ __html: index }}></div>
                                 </div>
                             );
@@ -98,12 +125,19 @@ const QuestionBox = (props) => {
                     }
                 </div>
                 <div className="d-flex flex-wrap justify-content-between align-items-center mx-3">
-                    <Badge colorScheme='purple'>{category}</Badge>
-                    <button onClick={handleNextQuestion} className="btn btn-primary m-2">{(next >= len - 1) ? 'Submit' : 'Next'}</button>
+                    <Badge colorScheme="purple">{category}</Badge>
+                    <button onClick={handleNextQuestion} className="btn btn-primary m-2">
+                        {next >= len - 1 ? 'Submit' : 'Next'}
+                    </button>
+                </div>
+
+                {/* Example: Display total time taken for all questions */}
+                <div className="total-time">
+                    {next >= len - 1 && <p>Total Time Taken: {totalTimeTaken} seconds</p>}
                 </div>
             </div>
         </>
     );
-}
+};
 
 export default QuestionBox;

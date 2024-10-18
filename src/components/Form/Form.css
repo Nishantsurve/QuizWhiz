@@ -16,6 +16,27 @@ form .form-label {
     color: black;
 }
 
+/* Add styles for the select options */
+.form-select {
+    color: #6a0dad; /* Light purple text color */
+    background-color: #f9f9f9; /* Optional: set a background for contrast */
+    border: 1px solid #6a0dad; /* Purple border */
+    padding: 5px;
+    appearance: none; /* Remove default styles in some browsers */
+}
+
+.form-select:focus {
+    border-color: #6a0dad; /* Keep the border purple on focus */
+    box-shadow: 0 0 5px rgba(106, 13, 173, 0.5); /* Optional: purple glow effect on focus */
+}
+
+.form-select option {
+    background-color: white; /* White background for dropdown options */
+    color: #6a0dad; /* Light purple text */
+}
+
+
+
 form .form-control,
 form .form-select {
     width: 100%;

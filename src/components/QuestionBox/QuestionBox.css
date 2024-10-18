@@ -1,6 +1,6 @@
 /* Define colors */
 :root {
-    --right-answer-color: #3B6561;
+    --right-answer-color: #4fdf97;
     --wrong-answer-color: #6C505F;
     --common-answer-color: #4F5684;
 }
@@ -20,7 +20,7 @@
 .q-box_timer {
     display: inline-block;
     background-color: #212832;
-    color: yellow;
+    color: #A45EDA;
     font-size: 1rem;
     padding: 12px;
     border-radius: 50px 50px 0px 0px;
@@ -76,18 +76,8 @@
     font-size: 18px; /* Font size for the number */
     color: #fff; /* Text color */
 }
-.correct {
-    background-color: green; /* Green for correct answers */
-}
 
-.incorrect {
-    background-color: red; /* Red for incorrect answers */
-}
 
-.optionSelected {
-    /* Style for the currently selected option */
-    border: 2px solid #53a24d; /* Example style */
-}
 
 
 
