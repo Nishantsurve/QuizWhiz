@@ -56,14 +56,14 @@ const QuestionBox = (props) => {
 
     // Handle next question logic
     const handleNextQuestion = () => {
-        const timeTakenForQuestion = timer; // Time taken for the current question
+        const timeTakenForQuestion = 30 - timer; // Time taken for the current question (if answered within 30s)
         setTimeList([...timeList, timeTakenForQuestion]); // Store the time for this question
 
         if (next <= len - 1) {
             checkAnswer(selectedAns);
             setNext(next + 1);
             setSelectedAns('');
-            setTimer(0); // Reset timer for the next question (start from 0)
+            setTimer(30); // Reset timer to 30 seconds for the next question
         }
 
         setAnswerList([...answerList, { 
@@ -77,17 +77,19 @@ const QuestionBox = (props) => {
         }]);
     };
 
-    // Timer starting from 0 for each question
-    const [timer, setTimer] = useState(0);
+    // Timer with a maximum of 30 seconds per question
+    const [timer, setTimer] = useState(30);
 
     useEffect(() => {
-        const myInterval = setInterval(() => {
-            setTimer(timer + 1); // Increment timer by 1 every second
-        }, 1000);
-
-        return () => {
-            clearInterval(myInterval);
-        };
+        if (timer > 0) {
+            const myInterval = setInterval(() => {
+                setTimer((prev) => prev - 1); // Decrement timer by 1 every second
+            }, 1000);
+            return () => clearInterval(myInterval);
+        } else {
+            // Automatically move to the next question if time runs out
+            handleNextQuestion();
+        }
     }, [timer]);
 
     // Calculate total time taken for all questions

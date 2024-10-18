@@ -7,7 +7,7 @@ const testimonials = [
         content:
             'This quiz web app is built using React JS. It can allow the user to select the criteria for their quiz from a list of options. The user can then proceed to answer the questions in the quiz and their performance will be tracked and shown in the scoreboard. Moreover, the app can be designed to be responsive and user-friendly.',
         avatar:
-            'https://unsplash.com/photos/a-laptop-computer-with-a-bunch-of-different-screens-on-top-of-it-XV2kGdTo9II',
+            '/Portfolio_image.jpg',
     }
 ];
 
@@ -74,8 +74,10 @@ function TestimonialCard(props) {
             </Flex>
             <Avatar
                 src={avatar}
-                height={'80px'}
-                width={'80px'}
+                height={'100px'}
+                width={'100px'}
+                borderRadius={'full'}
+                objectFit="cover"
                 alignSelf={'center'}
                 m={{ base: '0 0 35px 0', md: '0 0 0 50px' }}
             />
