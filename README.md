@@ -54,11 +54,11 @@ A quiz web application built with React.js, HTML, CSS, Javascript and Bootstrap.
 
 ## Screenshots
 
-!(./public/screenshot1.png)
-!(./public/screenshot5.png)
-!(./public/screenshot4.png)
-(./public/screenshot3.png)
-!(./public/screenshot6.png)
+![Screenshot 1](./public/screenshot1.png)
+![Screenshot 1](./public/screenshot5.png)
+![Screenshot 1](./public/screenshot4.png)
+![Screenshot 1](./public/screenshot3.png)
+![Screenshot 1](./public/screenshot6.png)
 
 ## Setup and Installation
 
