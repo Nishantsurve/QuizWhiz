@@ -17,7 +17,7 @@ A quiz web application built with React.js, HTML, CSS, and Bootstrap. This app f
 ## Features
 
 - Interactive quiz interface
-- Random questions fetched from the Trivia API
+- Questions fetched from the Trivia API according to your chosen difficult level,category and type of questions.
 - **Responsive design** that adapts to mobile, tablet, and desktop screens
 - Timed quizzes
 - Submit answers and receive a score report
