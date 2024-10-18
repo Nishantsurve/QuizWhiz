@@ -1,7 +1,7 @@
 
 # QuizWhiz
 
-A quiz web application built with React.js, HTML, CSS, and Bootstrap. This app fetches trivia questions from the [Trivia API](https://opentdb.com/) and allows users to participate in a timed quiz. The app also provides a detailed report of the user’s performance after the quiz, with an option to share the score via WhatsApp.
+A quiz web application built with React.js, HTML, CSS, Javascript and Bootstrap. This app fetches trivia questions from the [Trivia API](https://opentdb.com/) and allows users to participate in a timed quiz. The app also provides a detailed report of the user’s performance after the quiz, with an option to share the score via WhatsApp.
 
 ## Table of Contents
 
@@ -11,7 +11,6 @@ A quiz web application built with React.js, HTML, CSS, and Bootstrap. This app f
 - [Usage](#usage)
 - [Screenshots](#screenshots)
 - [APIs](#apis)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
@@ -68,3 +67,8 @@ To run the project locally, follow these steps:
 5. **Retake Quiz**: if you feel you want to take quiz once again. Click on retake button.
 
 6. **Share your score**: You can easily share your quiz score with friends by clicking the "Share" button on the result screen. This will open WhatsApp, allowing you to send your score directly.
+
+
+## License
+
+- MIT License

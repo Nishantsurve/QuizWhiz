@@ -16,23 +16,41 @@ form .form-label {
     color: black;
 }
 
-/* Add styles for the select options */
-.form-select {
-    color: #6a0dad; /* Light purple text color */
-    background-color: #f9f9f9; /* Optional: set a background for contrast */
-    border: 1px solid #6a0dad; /* Purple border */
-    padding: 5px;
-    appearance: none; /* Remove default styles in some browsers */
+/* Styling for select elements */
+select.form-select {
+    background-color: #f0f0f0;  /* Light grey background for the select element */
+    border: 1px solid #ccc;      /* Soft border */
+    color: #333;                 /* Text color */
+    padding: 0.6rem;             /* Padding for better spacing */
+    border-radius: 5px;          /* Rounded corners */
+    appearance: none;            /* Remove default arrow styling */
 }
 
-.form-select:focus {
-    border-color: #6a0dad; /* Keep the border purple on focus */
-    box-shadow: 0 0 5px rgba(106, 13, 173, 0.5); /* Optional: purple glow effect on focus */
+/* Apply the same style when hovering over the select */
+select.form-select:hover {
+    background-color: #e0e0e0;   /* Slightly darker grey on hover */
 }
 
-.form-select option {
-    background-color: white; /* White background for dropdown options */
-    color: #6a0dad; /* Light purple text */
+/* Style for the option elements */
+select.form-select option {
+    background-color: #f0f0f0;   /* Light grey background for options */
+    color: #333;                 /* Text color */
+}
+
+/* Button styling for consistency */
+.custom-btn {
+    background-color: #755ED3;   /* Purple button background */
+    color: white;                /* White text */
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.custom-btn:hover {
+    background-color: #674AB8;   /* Slightly darker purple on hover */
 }
 
 

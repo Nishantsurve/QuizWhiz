@@ -57,6 +57,7 @@ const QuestionBox = (props) => {
     // Handle next question logic
     const handleNextQuestion = () => {
         const timeTakenForQuestion = 30 - timer; // Time taken for the current question (if answered within 30s)
+        const updatedTimeList = [...timeList, timeTakenForQuestion];
         setTimeList([...timeList, timeTakenForQuestion]); // Store the time for this question
 
         if (next <= len - 1) {
@@ -75,6 +76,8 @@ const QuestionBox = (props) => {
             rightAnswer: options[1], 
             timeTaken: timeTakenForQuestion // Store time taken for review 
         }]);
+    const totalTimeTaken = updatedTimeList.reduce((total, time) => total + time, 0);
+    console.log('Total Time Taken:', totalTimeTaken);
     };
 
     // Timer with a maximum of 30 seconds per question
@@ -135,7 +138,7 @@ const QuestionBox = (props) => {
 
                 {/* Example: Display total time taken for all questions */}
                 <div className="total-time">
-                    {next >= len - 1 && <p>Total Time Taken: {totalTimeTaken} seconds</p>}
+                    {/*next >= len - 1 && <p>Total Time Taken: {totalTimeTaken} seconds</p>*/}
                 </div>
             </div>
         </>
