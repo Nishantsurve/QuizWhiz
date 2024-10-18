@@ -1,29 +1,32 @@
-import React, { useContext, useState } from 'react';
-import Form from '../../components/Form/Form';
-import { Box, Grid, Image, Text } from '@chakra-ui/react';
-import QuizArea from '../QuizArea/QuizArea';
-import quizContext from '../../context/quizContext';
+import React, { useContext, useState } from 'react'
+import Form from '../../components/Form/Form'
+import { Box } from '@chakra-ui/react';
+
+import QuizArea from '../QuizArea/QuizArea'
+import quizContext from '../../context/quizContext'
 import { HashLoader } from 'react-spinners';
+import { Text } from '@chakra-ui/react'
 
 const Home = () => {
-    const context = useContext(quizContext);
-    const { setUrl, url, fetchQuestions, setLoading, loading, questions } = context;
-    const [formData, setFormData] = useState({ number: '', category: '', difficulty: '', type: '' });
+    
+    const context = useContext(quizContext)
+    const { setUrl, url, fetchQuestions, setLoading, loading, questions } = context
+    const [formData, setFormData] = useState({ number: '', category: '', difficulty: '', type: '' })
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const { number, category, difficulty, type } = formData;
-        setUrl(`https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=${type}`);
-        fetchQuestions(url);
-        setLoading(true);
-    };
+        const { number, category, difficulty, type } = formData
+        setUrl(`https://opentdb.com/api.php?amount=${number}&category=${category}&difficulty=${difficulty}&type=${type}`, fetchQuestions(url))
+        setLoading(true)
+    }
 
     const onChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
 
     return (
         <>
+
             <div className="d-flex justify-content-center align-items-center">
                 <HashLoader
                     color={'#3585c1'}
@@ -36,22 +39,18 @@ const Home = () => {
             </div>
             {
                 (url === '' || questions.length === 0)
-                    ? 
-                    <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap={6} className="container my-3">
-                        <Box display="flex" alignItems="center" justifyContent="center">
-                            <Image  src="/dice1.png" alt="Quiz Image" borderRadius="md" />
-                        </Box>
-                        <Box>
-                            <Text mb={'4'} fontSize='4xl'>Start your Quiz Now</Text>
-                            <hr/>
-                            <Form handleSubmit={handleSubmit} onChange={onChange} />
-                        </Box>
-                    </Grid>
+                    ?
+                    <div className="container my-3">
+                        <Text mb={'4'} fontSize='4xl'>Start your Quiz Now</Text>
+                        <hr />
+                        <Form handleSubmit={handleSubmit} onChange={onChange} />
+                    </div>
                     :
                     <QuizArea />
             }
+            
         </>
-    );
-};
+    )
+}
 
-export default Home;
+export default Home
