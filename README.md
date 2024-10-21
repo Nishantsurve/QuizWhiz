@@ -55,11 +55,12 @@ A quiz web application built with React.js, HTML, CSS, Javascript and Bootstrap.
 
 ## Screenshots
 
-![Screenshot 1](public/screenshot1.png)
-![Screenshot 2](public/screenshot5.png)
-![Screenshot 3](public/screenshot4.png)
-![Screenshot 4](public/screenshot3.png)
-![Screenshot 5](public/screenshot6.png)
+![Screenshot (455)](https://github.com/user-attachments/assets/09585ff1-d102-4efe-a926-879bbd8f7dfb)
+![Screenshot (457)](https://github.com/user-attachments/assets/19e9f06d-94c0-4121-8357-342aae085b39)
+![Screenshot23](https://github.com/user-attachments/assets/8721ded8-3a4d-4c10-80dc-b3255ed1cf03)
+![Screenshot (459)](https://github.com/user-attachments/assets/e4930476-8608-45dc-9746-59abca53b8df)
+![Screenshot (461)](https://github.com/user-attachments/assets/db203568-fa97-41d0-8cf0-7e5fa541e2c6)
+
 
 ## Setup and Installation
 
